@@ -8,12 +8,12 @@ from webdriver_manager.chrome import ChromeDriverManager
 
 if __name__ == '__main__':
     while True:
-        now = datetime.now().timetuple()
+        now = datetime.now()
         date = now.strftime("%Y-%m-%d %H:%M:%S")
         try:
-            driver = webdriver.Chrome(ChromeDriverManager().install())
-            m2go(driver)
-            labaie(driver)
+            with webdriver.Chrome(ChromeDriverManager().install()) as driver:
+                m2go(driver)
+                labaie(driver)
             print(f'Fin des vérifications: {date}')
             time.sleep(86400*7)
         except:
